@@ -64,7 +64,11 @@ SECTIONS
 		. = ALIGN(4);
 		*(.rodata) 
 		fonts_hzk_start = .;
-		INCLUDE "../../fonts/fonts_hzk16s.ld"
+
+		/* Idk why there is 1 more "../" that causes failure while building in directory "./build", so I removed it. */
+		/* INCLUDE "../../fonts/fonts_hzk16s.ld" */
+		INCLUDE "../fonts/fonts_hzk16s.ld"
+
 		fonts_hzk_end = .;
 	} >vmROM
 

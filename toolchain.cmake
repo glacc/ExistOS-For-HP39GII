@@ -1,8 +1,11 @@
 SET(CMAKE_SYSTEM_NAME Generic)
 SET(CMAKE_SYSTEM_PROCESSOR arm)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
-SET(CMAKE_C_COMPILER   arm-none-eabi-gcc)
-SET(CMAKE_CXX_COMPILER arm-none-eabi-g++)
+# SET(CMAKE_C_COMPILER   arm-none-eabi-gcc)
+# SET(CMAKE_CXX_COMPILER arm-none-eabi-g++)
+# I use full path because I have multiple versions of the toolchain installed in my computer. #
+SET(CMAKE_C_COMPILER   "D:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin/arm-none-eabi-gcc.exe")
+SET(CMAKE_CXX_COMPILER "D:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin/arm-none-eabi-g++.exe")
 set(CMAKE_C_COMPILER_WORKS 1)
 set(CMAKE_CXX_COMPILER_WORKS 1)
 find_program(CMAKE_OBJCOPY arm-none-eabi-objcopy)
