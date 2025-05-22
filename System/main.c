@@ -26,6 +26,9 @@
 
 #include "Fatfs/ff.h"
 //#include "mpy_port.h"
+
+#include "Kbd.h"
+
 void check_emulator_status();
 
 uint32_t OnChipMemorySize = BASIC_RAM_SIZE;
@@ -106,6 +109,7 @@ static bool time_lable_refresh = true;
 extern bool g_system_in_emulator;
 
 #include "Tests/Test_TestDraw.h"
+#include "Tests/Test_KbdQueue.h"
 
 void Task_Main(void *args)
 {
@@ -116,7 +120,11 @@ void Task_Main(void *args)
     // SystemUIInit();
     // SystemFSInit();
 
+    Test_KbdQueue();
+
     Test_TestDraw();
+
+    Kbd_Initialize();
 
     while (true)
     {
@@ -134,7 +142,6 @@ extern uint32_t SYSTEM_STACK; // in ld script
 /* This is where OS starts. */
 void main()
 {
-
     void IRQ_ISR();
     void SWI_ISR();
     ll_set_irq_stack((uint32_t)&SYSTEM_STACK);
@@ -143,7 +150,7 @@ void main()
     ll_set_svc_vector(((uint32_t)SWI_ISR) + 4);
     ll_enable_irq(false);
 
-    ll_cpu_slowdown_enable(false);
+    ll_cpu_slowdown_enable(true);
 
     uint32_t memsz, phy_total, phy_free;
     memsz = ll_mem_phy_info(&phy_free, &phy_total);
@@ -163,10 +170,12 @@ void main()
     SwapMemorySize = ll_mem_swap_size();
     TotalAllocatableSize = OnChipMemorySize + SwapMemorySize;
 
-    xTaskCreate(Task_PrintTaskList, "PrintTaskList", 400, NULL, configMAX_PRIORITIES - 1, NULL);
-    xTaskCreate(Task_Main, "System", 400, NULL, configMAX_PRIORITIES - 3, NULL);
+    xTaskCreate(Task_PrintTaskList, "PrintTaskList", 400, NULL, configMAX_PRIORITIES - 5, NULL);
+    xTaskCreate(Task_Main, "System", 400, NULL, configMAX_PRIORITIES - 6, NULL);
 
     vTaskStartScheduler();
+
+    printf("Will here be executed?\n");
 
     while (true)
     {

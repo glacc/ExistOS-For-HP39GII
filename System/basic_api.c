@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <memory.h> // Warning caused by missing memory.h
 
 #include "SystemUI.h"
 #include "FreeRTOS.h"

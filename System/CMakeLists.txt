@@ -12,7 +12,7 @@ include_directories(./Fs/Fatfs)
 
 include_directories(./Config)
 
-include_directories(./LCD)
+include_directories(./Drivers)
 
 #include_directories(./KLib/lvgl)
 
@@ -32,7 +32,7 @@ aux_source_directory(./Fs/Fatfs                                SYS_SRCS)
 #aux_source_directory(./Fs/littlefs                             SYS_SRCS)
 
 aux_source_directory(./Tests                                   SYS_SRCS)
-aux_source_directory(./LCD                                     SYS_SRCS)
+aux_source_directory(./Drivers                                 SYS_SRCS)
 
 #add_subdirectory(gb)
 #add_subdirectory(KLib)

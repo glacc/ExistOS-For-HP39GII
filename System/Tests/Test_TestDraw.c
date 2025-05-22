@@ -6,25 +6,29 @@
 
 #include "LCD.h"
 
-#include "SystemUI.h"
+static const char title_string[] = "Test Draw";
+static const char hello_string[] = "ÄãºÃxwx";
+static const char glacc_string[] = "Glacc (aka ¿§à¬½´) qwq";
 
 void Test_TestDraw(void)
 {
     printf("Running Test_TestDraw\n");
 
-    uint8_t *temp_vram = (uint8_t *)malloc(LCD_PIX_W * LCD_PIX_H);
+    uint8_t *temp_vram = (uint8_t *)malloc(LCD_SIZE_W * LCD_SIZE_H);
     if (temp_vram == NULL)
         return;
 
-    LCD_PutGBKCharXY(temp_vram, '²â', 16, 16);
-
     uint8_t *ptr_vram = temp_vram;
 
-    for (int y = 0; y < LCD_PIX_H; y++)
+    for (int y = 0; y < LCD_SIZE_H; y++)
     {
-        for (int x = 0; x < LCD_PIX_W; x++)
-            *ptr_vram++ = (uint8_t)x;
+        for (int x = 0; x < LCD_SIZE_W; x++)
+            *ptr_vram++ = LCD_SIZE_W - (uint8_t)x;
     }
+
+    LCD_PrintStrXY(temp_vram, title_string, 32, 16);
+    LCD_PrintStrXY(temp_vram, hello_string, 32, 64);
+    LCD_PrintStrXY(temp_vram, glacc_string, 32, 96);
 
     LCD_Update((const uint8_t *)temp_vram);
 
