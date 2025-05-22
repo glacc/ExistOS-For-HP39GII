@@ -12,6 +12,8 @@ include_directories(./Fs/Fatfs)
 
 include_directories(./Config)
 
+include_directories(./LCD)
+
 #include_directories(./KLib/lvgl)
 
 #include_directories(${CMAKE_SOURCE_DIR}/Libs/src/micropython-master/)
@@ -28,6 +30,9 @@ aux_source_directory(./Core/porting                            SYS_SRCS)
 aux_source_directory(./Fs                                      SYS_SRCS)
 aux_source_directory(./Fs/Fatfs                                SYS_SRCS)
 #aux_source_directory(./Fs/littlefs                             SYS_SRCS)
+
+aux_source_directory(./Tests                                   SYS_SRCS)
+aux_source_directory(./LCD                                     SYS_SRCS)
 
 #add_subdirectory(gb)
 #add_subdirectory(KLib)

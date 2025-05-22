@@ -94,17 +94,6 @@ void softDelayMs(uint32_t ms)
     while ((ll_get_time_ms() - cur) < ms);
 }
 
-void vTask2(void *args)
-{
-    uint32_t ticks = 0;
-    while (true)
-    {
-        printf("SYS Run Time: %d s\n", ticks);
-        ticks++;
-        vTaskDelay(pdMS_TO_TICKS(5000));
-    }
-}
-
 void vApplicationIdleHook(void)
 {
     ll_system_idle();
@@ -116,13 +105,18 @@ static bool time_lable_refresh = true;
 #define EMU_DATA_PORT ((volatile uint8_t *)0x20000000)
 extern bool g_system_in_emulator;
 
-void Task_Main() {
+#include "Tests/Test_TestDraw.h"
+
+void Task_Main(void *args)
+{
 
     // printf("R13:%08x\n", get_stack());
 
     // void SystemUIInit();
     // SystemUIInit();
     // SystemFSInit();
+
+    Test_TestDraw();
 
     while (true)
     {
