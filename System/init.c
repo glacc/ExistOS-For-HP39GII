@@ -21,8 +21,6 @@ extern unsigned int __init_data;
 extern unsigned int __data_start;
 extern unsigned int __data_end;
 
-
-
 const char __attribute__((section(".sysinfo"))) system_build_time[] = _TIMEZ_;//__DATE__ " " __TIME__;
 extern uint32_t SYSTEM_STACK;
 void volatile _init() __attribute__((section(".init"))) __attribute__((naked));
@@ -46,8 +44,6 @@ void volatile _init() {
     for (pui32Dest =  (uint32_t *)&__data_start; pui32Dest <  (uint32_t *)&__data_end;) {
         *pui32Dest++ = *pui32Src++;
     }
-
-
 
     //__libc_init_array();
 

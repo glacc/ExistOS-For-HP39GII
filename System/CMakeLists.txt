@@ -1,4 +1,5 @@
 
+set(CMAKE_IGNORE_PATH   "./Obsolete")
 
 include_directories(./)
 include_directories(./Core)
@@ -17,7 +18,7 @@ include_directories(./Config)
 #include_directories(${CMAKE_SOURCE_DIR}/Libs/src/micropython-master/ports/eoslib)
 #include_directories(${CMAKE_SOURCE_DIR}/Libs/src/micropython-master/ports/eoslib/build)
 include_directories(${CMAKE_SOURCE_DIR}/Libs/src/libtommath-0.39/)
-include_directories(${CMAKE_SOURCE_DIR}/Libs/src/khicas/)
+#include_directories(${CMAKE_SOURCE_DIR}/Libs/src/khicas/)
 include_directories(${CMAKE_SOURCE_DIR}/Libs/src/gmp/include/)
 
 

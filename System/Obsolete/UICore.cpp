@@ -1,4 +1,3 @@
-
 #include "FreeRTOS.h"
 #include "task.h"
 
@@ -684,8 +683,10 @@ void keyMsg(uint32_t key, int state) {
             if (curPage == 0) {
                 if (appPage_select == 0) {
 
+                    /*
                     void StartKhiCAS();
                     StartKhiCAS();
+                    */
                 }
             } else if (curPage == 1) {
                 goto CONSOLE_KEY_EVENT;

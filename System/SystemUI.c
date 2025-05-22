@@ -1,7 +1,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-
 #include "SystemUI.h"
 
 #include "debug.h"
@@ -74,8 +73,6 @@ extern bool OS_UISuspend;
 
 uint32_t g_key;
 uint32_t g_ket_press;
-
-
 
 /*
 static void keypad_read(lv_indev_drv_t *indev_drv, lv_indev_data_t *data) {
@@ -293,32 +290,32 @@ static void keypad_read(lv_indev_drv_t *indev_drv, lv_indev_data_t *data) {
 
 static TaskHandle_t pUITask;
 
-void SystemUIInit() {
-
-    //UI_Init();
-    xTaskCreate(UI_Task, "UICore", 800, NULL, configMAX_CO_ROUTINE_PRIORITIES - 3, &pUITask);
+void SystemUIInit()
+{
+    // xTaskCreate(UI_Task, "UICore", 800, NULL, configMAX_CO_ROUTINE_PRIORITIES - 3, &pUITask);
 }
 
-void UI_Resume();
-void UI_Suspend();
+// void UI_Resume();
+// void UI_Suspend();
 
-extern bool UIForceRefresh ;
-//void keyMsg(uint32_t key, int state);
+// extern bool UIForceRefresh ;
+// void keyMsg(uint32_t key, int state);
 void SystemUIRefresh() 
 {
     vTaskDelay(pdMS_TO_TICKS(100));
-    UIForceRefresh= true;
+    // UIForceRefresh= true;
     //keyMsg(0, -1);
 }
 
-void SystemUISuspend() {
+void SystemUISuspend()
+{
     vTaskSuspend(pUITask);
-    UI_Suspend();
-
+    // UI_Suspend();
 }
 
-void SystemUIResume() {
-    UI_Resume();
+void SystemUIResume()
+{
+    // UI_Resume();
     vTaskResume(pUITask);
     ll_disp_set_indicator(0, -1);
     SystemUIRefresh();

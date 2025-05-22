@@ -85,7 +85,7 @@ uint32_t check_frequency() {
 float mem_cr = 0;
 uint32_t g_mem_comp_rate[16];
 uint32_t g_mem_comp_rate_ptr = 0;
-void printTaskList() {
+void PrintTaskList() {
     /*
     vTaskList((char *)&pcWriteBuffer);
     printf("=================OS Loader TASK==================\r\n");
@@ -132,7 +132,7 @@ void vTask1(void *pvParameters) {
         g_core_cur_freq_mhz = (HCLK_Freq / 1000000) * (*((uint32_t *)0x80040030) & 0x1F);
         c++;
         if (c == 30) {
-            printTaskList();
+            PrintTaskList();
             c = 0;
         }
     }
@@ -587,7 +587,7 @@ void tud_cdc_rx_cb(uint8_t itf) {
             printf("cmd:%s\n", cdc_path_loader_buffer);
 
             if (strcmp(cdc_path_loader_buffer, "getstatus") == 0) {
-                printTaskList();
+                PrintTaskList();
                 goto fin;
             }
 

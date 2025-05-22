@@ -6,7 +6,6 @@
 
 #include "llapi_code.h"
 
-
 #ifndef NAKED
     #define NAKED   __attribute__((naked))
 #endif

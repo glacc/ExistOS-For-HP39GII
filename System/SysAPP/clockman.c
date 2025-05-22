@@ -1,5 +1,4 @@
 
-
 static lv_group_t *g;
 static lv_obj_t *tv;
 static lv_obj_t *t1;

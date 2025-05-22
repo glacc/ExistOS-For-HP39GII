@@ -12,18 +12,15 @@
 #define INDICATE_TX        (1 << 5)
 #define INDICATE_RX        (1 << 6)
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+    void SystemUIRefresh() ;
+    void SystemUISuspend();
+    void SystemUIResume();
 
-void SystemUIRefresh() ;
-void SystemUISuspend();
-void SystemUIResume();
-
-void UI_Task(void *_);
-
+    // void UI_Task(void *_);
 
 #ifdef __cplusplus
 }
