@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <stddef.h>
 #include <stdbool.h>
 
 #include "llapi_code.h"
@@ -12,7 +13,11 @@
 
 #include "LCD.h"
 
+#include "Kbd_QueueList.h"
+
 TaskHandle_t Keyboard_task_handle;
+
+static Kbd_QueueLinkedList kbd_queue_list;
 
 static void Kbd_UInt32ToBinary(uint32_t num, char *str_buffer)
 {
@@ -79,13 +84,15 @@ static void Kbd_Task(void *args)
             printf("key_press = %s\nkey_value = %s\n", key_press_bin_buffer, key_value_bin_buffer);
         }
 
-        // Temporary 100ms delay...
-        vTaskDelay(pdMS_TO_TICKS(100));
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
 
 void Kbd_Initialize(void)
 {
+    kbd_queue_list.first = NULL;
+    kbd_queue_list.last = NULL;
+
     xTaskCreate
     (
         Kbd_Task,
