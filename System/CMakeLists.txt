@@ -1,5 +1,5 @@
 
-set(CMAKE_IGNORE_PATH   "./Obsolete")
+set(CMAKE_IGNORE_PATH   "./Obsolete; ./Drivers/Unused")
 
 include_directories(./)
 include_directories(./Core)

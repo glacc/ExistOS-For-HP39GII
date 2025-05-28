@@ -108,21 +108,14 @@ static bool time_lable_refresh = true;
 #define EMU_DATA_PORT ((volatile uint8_t *)0x20000000)
 extern bool g_system_in_emulator;
 
-#include "Tests/Test_TestDraw.h"
-#include "Tests/Test_KbdQueue.h"
+#include "Tests/Tests.h"
 
 void Task_Main(void *args)
 {
-
     // printf("R13:%08x\n", get_stack());
 
-    // void SystemUIInit();
-    // SystemUIInit();
-    // SystemFSInit();
-
-    Test_KbdQueue();
-
-    Test_TestDraw();
+    putchar('\n');
+    Test_RunTests();
 
     Kbd_Initialize();
 

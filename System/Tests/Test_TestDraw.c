@@ -12,7 +12,7 @@ static const char glacc_string[] = "Glacc (aka ¿§à¬½´) qwq";
 
 void Test_TestDraw(void)
 {
-    printf("Running Test_TestDraw\n");
+    printf("- Runing Test_TestDraw -\n\n");
 
     uint8_t *temp_vram = (uint8_t *)malloc(LCD_SIZE_W * LCD_SIZE_H);
     if (temp_vram == NULL)
