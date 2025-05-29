@@ -118,9 +118,9 @@ void Test_KbdQueue(void)
     Test_KbdQueue_LinkedListNode(node_1);
     Test_KbdQueue_LinkedListNode(node_2);
 
-    Kbd_QueueLinkedList_DeleteNode(&key_queue_linked_list, node_2);
-    Test_KbdQueue_ListLinkedListNodes(&key_queue_linked_list);
     Kbd_QueueLinkedList_DeleteNode(&key_queue_linked_list, node_1);
+    Test_KbdQueue_ListLinkedListNodes(&key_queue_linked_list);
+    Kbd_QueueLinkedList_DeleteNode(&key_queue_linked_list, node_2);
     Test_KbdQueue_ListLinkedListNodes(&key_queue_linked_list);
 
     Kbd_QueueLinkedList_DeinitList(&key_queue_linked_list);

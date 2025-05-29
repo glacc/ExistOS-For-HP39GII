@@ -42,7 +42,7 @@ static void Kbd_Task(void *args)
     {
         Kbd_CheckAndPrintKeyPress();
 
-        vTaskDelay(pdMS_TO_TICKS(10));
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
 

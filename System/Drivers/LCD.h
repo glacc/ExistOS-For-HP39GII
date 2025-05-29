@@ -15,6 +15,10 @@
 
 #define LCD_OFFSET_XY(x, y)     ((y * LCD_SIZE_W) + x)
 
+#define LCD_FONT_SIZE_8         8
+#define LCD_FONT_SIZE_12        12
+#define LCD_FONT_SIZE_16        16
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,12 +26,14 @@ extern "C" {
     extern void LCD_Update(const uint8_t *buffer);
     extern void LCD_SetIndicators(const uint8_t indicators);
 
-    extern void LCD_PutASCIICharXY(uint8_t *buffer, const char character, int x, int y, int size);
-    extern void LCD_PutGBKCharXY(uint8_t *buffer, const uint16_t character, int x, int y);
+    extern void LCD_PutASCIICharXY(uint8_t *buffer, const char character, int x, int y, int size, uint8_t brightness);
+    extern void LCD_PutGBKCharXY(uint8_t *buffer, const uint16_t character, int x, int y, uint8_t brightness);
 
-    extern int LCD_PutCharXY(uint8_t *buffer, const char *ptr_char, int x, int y);
+    extern int LCD_PutCharXY(uint8_t *buffer, const char *ptr_char, int x, int y, int size, uint8_t brightness);
 
-    extern void LCD_PrintStrXY(uint8_t *buffer, const char *str, int x, int y);
+    extern void LCD_PrintStrXY(uint8_t *buffer, const char *str, int x, int y, int size, uint8_t brightness);
+
+    extern void LCD_ScrollXY(uint8_t *buffer, int x, int y);
 
 #ifdef __cplusplus
 }

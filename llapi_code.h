@@ -4,10 +4,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define LL_FAST_SWI_BASE                (0xEF00)
-#define LL_SWI_BASE                     (0xEE00)
-#define SYS_SWI_BASE                     (0xAC00)
-#define LL_SWI_NUM                      (255)
+#define LL_FAST_SWI_BASE               (0xEF00)
+#define LL_SWI_BASE                    (0xEE00)
+#define SYS_SWI_BASE                   (0xAC00)
+#define LL_SWI_NUM                     (255)
 
 #define LL_FAST_SWI_GET_STVAL          (LL_FAST_SWI_BASE + 0)
 #define LL_FAST_SWI_SET_STVAL          (LL_FAST_SWI_BASE + 1)
@@ -66,26 +66,26 @@
 #define LL_SWI_FLASH_PAGE_NUM          (LL_SWI_BASE + 74)
 #define LL_SWI_FLASH_PAGE_SIZE_B       (LL_SWI_BASE + 75)
 
-#define LL_FAST_SWI_SYSTEM_IDLE             (LL_FAST_SWI_BASE + 80)
-#define LL_FAST_SWI_CORE_CUR_FREQ           (LL_FAST_SWI_BASE + 81)
+#define LL_FAST_SWI_SYSTEM_IDLE        (LL_FAST_SWI_BASE + 80)
+#define LL_FAST_SWI_CORE_CUR_FREQ      (LL_FAST_SWI_BASE + 81)
 
 
-#define LL_FAST_SWI_GET_CHARGE_STATUS     (LL_FAST_SWI_BASE + 82)
-#define LL_SWI_CHARGE_ENABLE              (LL_SWI_BASE + 83)
-#define LL_SWI_SLOW_DOWN_ENABLE              (LL_SWI_BASE + 84)
-#define LL_SWI_SLOW_DOWN_MINFRAC              (LL_SWI_BASE + 85)
-
-
-
-#define LL_FAST_SWI_PCM_BUFFER_IS_IDLE        (LL_FAST_SWI_BASE + 90)
-#define LL_FAST_SWI_PCM_BUFFER_PLAY           (LL_FAST_SWI_BASE + 91)
+#define LL_FAST_SWI_GET_CHARGE_STATUS  (LL_FAST_SWI_BASE + 82)
+#define LL_SWI_CHARGE_ENABLE           (LL_SWI_BASE + 83)
+#define LL_SWI_SLOW_DOWN_ENABLE        (LL_SWI_BASE + 84)
+#define LL_SWI_SLOW_DOWN_MINFRAC       (LL_SWI_BASE + 85)
 
 
 
-#define LL_SWI_MEM_PHY_INFO                  (LL_SWI_BASE + 100)
-#define LL_FAST_SWI_MEM_COMPRATE             (LL_FAST_SWI_BASE + 101)
-#define LL_FAST_SWI_MEM_ENABLE_SWAP          (LL_FAST_SWI_BASE + 102)
-#define LL_FAST_SWI_MEM_SWAP_SIZE            (LL_FAST_SWI_BASE + 103)
+#define LL_FAST_SWI_PCM_BUFFER_IS_IDLE (LL_FAST_SWI_BASE + 90)
+#define LL_FAST_SWI_PCM_BUFFER_PLAY    (LL_FAST_SWI_BASE + 91)
+
+
+
+#define LL_SWI_MEM_PHY_INFO            (LL_SWI_BASE + 100)
+#define LL_FAST_SWI_MEM_COMPRATE       (LL_FAST_SWI_BASE + 101)
+#define LL_FAST_SWI_MEM_ENABLE_SWAP    (LL_FAST_SWI_BASE + 102)
+#define LL_FAST_SWI_MEM_SWAP_SIZE      (LL_FAST_SWI_BASE + 103)
 
 
 
@@ -96,8 +96,8 @@
 
 
 
-#define SYS_APP_EXIT                            (SYS_SWI_BASE + 1)
-#define SYS_APP_SLEEP_MS                        (SYS_SWI_BASE + 2)
+#define SYS_APP_EXIT                   (SYS_SWI_BASE + 1)
+#define SYS_APP_SLEEP_MS               (SYS_SWI_BASE + 2)
 
 
 #endif

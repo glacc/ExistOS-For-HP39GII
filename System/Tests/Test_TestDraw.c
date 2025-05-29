@@ -6,9 +6,10 @@
 
 #include "LCD.h"
 
-static const char title_string[] = "Test Draw";
-static const char hello_string[] = "ÄãºÃxwx";
-static const char glacc_string[] = "Glacc (aka ¿§à¬½´) qwq";
+static const char test_draw_string[] = "Test Draw";
+static const char gbk_hello_string[] = "ÄãºÃ";
+static const char hello_world_string[] = "Hello, world!";
+static const char glacc_string[] = "Glacc qwq";
 
 void Test_TestDraw(void)
 {
@@ -26,9 +27,15 @@ void Test_TestDraw(void)
             *ptr_vram++ = LCD_SIZE_W - (uint8_t)x;
     }
 
-    LCD_PrintStrXY(temp_vram, title_string, 32, 16);
-    LCD_PrintStrXY(temp_vram, hello_string, 32, 64);
-    LCD_PrintStrXY(temp_vram, glacc_string, 32, 96);
+    LCD_PrintStrXY(temp_vram, test_draw_string, 4, 4, LCD_FONT_SIZE_16, 0);
+    LCD_PrintStrXY(temp_vram, gbk_hello_string, 4, 24, LCD_FONT_SIZE_16, 0);
+
+    const int grayscale_offset_y = 56;
+    LCD_PrintStrXY(temp_vram, hello_world_string, 4, grayscale_offset_y, LCD_FONT_SIZE_8, 127);
+    LCD_PrintStrXY(temp_vram, hello_world_string, 4, grayscale_offset_y + 12, LCD_FONT_SIZE_12, 63);
+    LCD_PrintStrXY(temp_vram, hello_world_string, 4, grayscale_offset_y + 12 + 16, LCD_FONT_SIZE_16, 0);
+
+    LCD_PrintStrXY(temp_vram, glacc_string, 32, 108, LCD_FONT_SIZE_12, 0);
 
     LCD_Update((const uint8_t *)temp_vram);
 

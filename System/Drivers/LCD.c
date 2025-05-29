@@ -19,7 +19,7 @@ void LCD_SetIndicators(const uint8_t indicators)
     ll_disp_set_indicator(indicators, -1);
 }
 
-void LCD_PutASCIICharXY(uint8_t *buffer, const char character, int x, int y, int size)
+void LCD_PutASCIICharXY(uint8_t *buffer, const char character, int x, int y, int size, uint8_t brightness)
 {
     if (buffer == NULL)
         return;
@@ -65,7 +65,7 @@ void LCD_PutASCIICharXY(uint8_t *buffer, const char character, int x, int y, int
         for (int font_x = 0; font_x < font_width; font_x++)
         {
             if ((font_pixels & 0x80) != 0)
-                *ptr_buffer = 0;
+                *ptr_buffer = brightness;
             ptr_buffer++;
 
             font_pixels <<= 1;
@@ -77,7 +77,7 @@ void LCD_PutASCIICharXY(uint8_t *buffer, const char character, int x, int y, int
     }
 }
 
-void LCD_PutGBKCharXY(uint8_t *buffer, const uint16_t character, int x, int y)
+void LCD_PutGBKCharXY(uint8_t *buffer, const uint16_t character, int x, int y, uint8_t brightness)
 {
     if (buffer == NULL)
         return;
@@ -106,7 +106,7 @@ void LCD_PutGBKCharXY(uint8_t *buffer, const uint16_t character, int x, int y)
         for (int t = 0; t < 8; t++)
         {
             if (font_pixels & 0x80)
-                *ptr_buffer = 0;
+                *ptr_buffer = brightness;
             ptr_buffer++;
 
             px++;
@@ -118,7 +118,7 @@ void LCD_PutGBKCharXY(uint8_t *buffer, const uint16_t character, int x, int y)
         for (int t = 0; t < 8; t++)
         {
             if (font_pixels & 0x80)
-                *ptr_buffer = 0;
+                *ptr_buffer = brightness;
             ptr_buffer++;
             
             px++;
@@ -132,7 +132,7 @@ void LCD_PutGBKCharXY(uint8_t *buffer, const uint16_t character, int x, int y)
     }
 }
 
-int LCD_PutCharXY(uint8_t *buffer, const char *ptr_char, int x, int y)
+int LCD_PutCharXY(uint8_t *buffer, const char *ptr_char, int x, int y, int size, uint8_t brightness)
 {
     if (buffer == NULL || ptr_char == NULL)
         return 8;
@@ -143,7 +143,7 @@ int LCD_PutCharXY(uint8_t *buffer, const char *ptr_char, int x, int y)
     {
         // ASCII Character //
 
-        LCD_PutASCIICharXY(buffer, current_char, x, y, 16);
+        LCD_PutASCIICharXY(buffer, current_char, x, y, size, brightness);
 
         return 8;
     }
@@ -153,13 +153,13 @@ int LCD_PutCharXY(uint8_t *buffer, const char *ptr_char, int x, int y)
 
         uint16_t gbk_code = ((uint16_t)*(ptr_char + 1)) | ((uint16_t)current_char << 8);
 
-        LCD_PutGBKCharXY(buffer, gbk_code, x, y);
+        LCD_PutGBKCharXY(buffer, gbk_code, x, y, brightness);
 
         return 16;
     }
 }
 
-void LCD_PrintStrXY(uint8_t *buffer, const char *str, int x, int y)
+void LCD_PrintStrXY(uint8_t *buffer, const char *str, int x, int y, int size, uint8_t brightness)
 {
     if (buffer == NULL || str == NULL)
         return;
@@ -170,7 +170,7 @@ void LCD_PrintStrXY(uint8_t *buffer, const char *str, int x, int y)
     const char *ptr_str = str;
     while (*ptr_str != '\0')
     {
-        int x_increment = LCD_PutCharXY(buffer, ptr_str, px, py);
+        int x_increment = LCD_PutCharXY(buffer, ptr_str, px, py, size, brightness);
 
         px += x_increment;
 
@@ -179,4 +179,9 @@ void LCD_PrintStrXY(uint8_t *buffer, const char *str, int x, int y)
 
         ptr_str++;
     }
+}
+
+void LCD_ScrollXY(uint8_t *buffer, int x, int y)
+{
+    // Unimplemented yet. //
 }
